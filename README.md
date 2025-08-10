@@ -20,3 +20,22 @@ Usando as mesmas imagens e códigos da entapa anterior.
 ```bash
 docker compose up -d
 ```
+
+#### Kubernets + minikube
+Para simular um ambiente para devops, instalei o kubernets e minikube localmente. Criar os arquivos kube/*-deployment.
+Para usar a imagem anterior da aplicação php-apache eu iniciei o minikube com o comando
+```bash
+minikube start --driver=docker
+```
+
+Depois executei o comando para realizar o deployment do kubernets:
+```bash
+kubectl create -f kube/deploy
+```
+
+#### CICD - Github actions
+Após configurar o Github self-hosted, bastou replicar os comandos acima no arquivo .github/workflows/deploy.yml e excutar o runner para poder implatar as atualizações feitas na branch master.
+
+
+## Objetivos
+- Criar uma estrutura de front-end e de backend com repositórios distintos, que vai atualizar as imagens localmente. Ajustar esse projeto para atualizar apenas o devops das aplicações envolvidas. Aproveitar o mesmo runner para atualizar imagens e para fazer o rollout das aplicações.
