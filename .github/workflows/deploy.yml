@@ -1,0 +1,23 @@
+name: CICD - Kubernets + Minikube, aplicação php + apache + nginx
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build php-apache imagem
+        run: eval $(minikube -p minikube docker-env)
+
+      - name: Build php-apache imagem
+        run: docker build -t php-app:latest .
+
+      - name: Update Kubernets + Minikube deployment
+        run: kubectl rollout restart deployment php-deployment
