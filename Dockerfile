@@ -18,3 +18,5 @@ RUN a2enmod rewrite
 
 # Reiniciando o Apache
 RUN service apache2 restart
+
+EXPOSE 80
