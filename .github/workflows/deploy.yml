@@ -20,4 +20,4 @@ jobs:
         run: docker build -t php-app:latest .
 
       - name: Update Kubernets + Minikube deployment
-        run: kubectl rollout restart deployment php-deployment
+        run: kubectl rollout restart deployment nginx-deployment php-deployment
